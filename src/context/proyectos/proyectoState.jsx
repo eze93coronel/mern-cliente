@@ -3,7 +3,7 @@ import uuid from 'uuid/package.json'
 
 import proyectoContext from './proyectoContext'; 
 import proyectoReducer from './proyectoReducer';
-import { FORMULARIO_PROYECTO,OBTENER_PROYECTOS,AGREGAR_PROYECTOS ,VALIDAR_FORMULARIO,PROYECTO_ACTUAL} from '../../types';
+import { FORMULARIO_PROYECTO,OBTENER_PROYECTOS,AGREGAR_PROYECTOS ,VALIDAR_FORMULARIO,PROYECTO_ACTUAL,ELIMINAR_PROYECTO} from '../../types';
 
 
 
@@ -21,9 +21,7 @@ const ProyectoState = props =>{
     ]
     const initialState = {
 
-    proyectos :[
-         
-            ],
+    proyectos :[],
         formulario : false,
         errorformulario : false,
         proyecto : null
@@ -75,6 +73,14 @@ const proyectoActual = proyectoId =>{
         payload : proyectoId
     })
 }
+//ELIMINA UN  PROYECTO 
+const eliminarProyecto = proyectoId =>{
+    dispatch({
+        type:ELIMINAR_PROYECTO,
+        payload: proyectoId
+    })
+}
+
 return (
     
     
@@ -89,7 +95,8 @@ return (
             obtenerProyectos,
             agregarProyecto,
             mostrarError,
-            proyectoActual
+            proyectoActual,
+            eliminarProyecto
         }}
         >
             {props.children}

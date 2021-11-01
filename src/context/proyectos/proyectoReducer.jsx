@@ -1,5 +1,5 @@
  
-import { AGREGAR_PROYECTOS, FORMULARIO_PROYECTO,OBTENER_PROYECTOS, VALIDAR_FORMULARIO ,  PROYECTO_ACTUAL} from '../../types';
+import { AGREGAR_PROYECTOS, FORMULARIO_PROYECTO,OBTENER_PROYECTOS, VALIDAR_FORMULARIO ,  PROYECTO_ACTUAL,ELIMINAR_PROYECTO} from '../../types';
 
 
  export default (state,action) =>{
@@ -30,6 +30,12 @@ case  PROYECTO_ACTUAL :
 return {
   ...state,
   proyecto : state.proyectos.filter(proyecto => proyecto.id === action.payload)
+}
+case ELIMINAR_PROYECTO : 
+return{
+    ...state,
+    proyectos : state.proyectos.filter(proyecto => proyecto.id !== action.payload)
+    
 }
    default : 
 
