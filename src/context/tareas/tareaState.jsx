@@ -22,28 +22,29 @@ const TareaState = props =>{
     }
 
         ],
-        tareasproyecto : null
+    tareasproyecto : null
+
     }
 
     //crear dispatch y ststae 
 
-    const [state,dispath] = useReducer(tareaReducer,initialState);
+    const [state,dispatch] = useReducer(tareaReducer,initialState);
 
 // obtener tareas de un proyecto 
 
 
 const obtenerTareas = proyectoId =>{
-    dispath({
+    dispatch({
         type: TAREAS_PROYECTO,
         payload : proyectoId
     })
 }
+
     return(
         <TareaContext.Provider
         value={{
             tareas : state.tareas,
-            tareasproyecto : state.tareasproyecto,
-            obtenerTareas
+          obtenerTareas
         }}
         >
         {props.children}

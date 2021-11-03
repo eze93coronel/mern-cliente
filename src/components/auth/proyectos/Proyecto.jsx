@@ -1,6 +1,6 @@
 import React ,{useContext}from 'react'
 import proyectoContext from '../../../context/proyectos/proyectoContext';
-import tareaContext from '../../../context/tareas/tareaContext';
+import tareaContext from '../../../context/tareas/tareaState';
 
 const Proyecto = ({proyecto}) => {
 
@@ -9,7 +9,7 @@ const Proyecto = ({proyecto}) => {
     const {proyectoActual} = proyectosContext;
  
   // obtener la fn del context de tarea 
-const tareasContext =useContext(tareaContext)
+const tareasContext = useContext(tareaContext)
  const {obtenerTareas}=tareasContext;
      // funcion para agregar el proyecto actual 
 
@@ -24,7 +24,7 @@ const tareasContext =useContext(tareaContext)
  <button
    type="button"
    className="btn btn-blank"
-   onClick={()=>proyectoActual(proyecto.id)}
+   onClick={()=>seleccionarProyecto(proyecto.id)}
    >{proyecto.nombre}</button>
 
 
