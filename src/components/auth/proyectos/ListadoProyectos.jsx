@@ -1,7 +1,7 @@
 import React,{useContext,useEffect} from 'react';
 import Proyecto from './Proyecto';
 import proyectoContext from '../../../context/proyectos/proyectoContext';
-
+import {CSSTransition,Transition, TransitionGroup} from 'react-transition-group'
 const ListadoProyectos = () => {
  
   // exttraer proyectos de nivel inicial
@@ -12,6 +12,7 @@ const ListadoProyectos = () => {
   
 useEffect(()=>{
   obtenerProyectos();
+  //eslint-disable-next-line
 },[])
 
 
@@ -23,12 +24,23 @@ if(proyectos.lenght === 0)  return null;
 
     return ( 
   <ul className="listado-proyectos">
-    {proyectos.map(proyecto=>(
+
+   <TransitionGroup>
+
+   {proyectos.map(proyecto=>(
+     <CSSTransition
+     key={proyecto.id}
+     timeout={200}
+     classNames="proyecto"
+     >
         <Proyecto 
-        key={proyecto.id}
         proyecto={proyecto}
         />
+        </CSSTransition>
     ))}
+   </TransitionGroup>
+
+
   </ul>
 
 

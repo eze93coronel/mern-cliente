@@ -1,6 +1,6 @@
 import React ,{useContext}from 'react'
 import proyectoContext from '../../../context/proyectos/proyectoContext';
-import tareaContext from '../../../context/tareas/tareaState';
+import TareaContext from '../../../context/tareas/tareaContext';
 
 const Proyecto = ({proyecto}) => {
 
@@ -9,8 +9,10 @@ const Proyecto = ({proyecto}) => {
     const {proyectoActual} = proyectosContext;
  
   // obtener la fn del context de tarea 
-const tareasContext = useContext(tareaContext)
+const tareasContext = useContext(TareaContext)
  const {obtenerTareas}=tareasContext;
+
+
      // funcion para agregar el proyecto actual 
 
      const seleccionarProyecto = id=>{

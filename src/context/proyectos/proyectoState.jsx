@@ -11,10 +11,10 @@ import { FORMULARIO_PROYECTO,OBTENER_PROYECTOS,AGREGAR_PROYECTOS ,VALIDAR_FORMUL
 const ProyectoState = props =>{
 
     const proyectos = [
-        {id:1,nombre : 'Tienda Virtual'},
-        {id: 2,nombre:'Intranet'},
-        {id: 3,nombre : 'Diseño de Sitio Web'},
-        {id: 4,nombre : 'MERN'}
+        {id:1, nombre : 'Tienda Virtual'},
+        {id: 2, nombre:'Intranet'},
+        {id: 3, nombre : 'Diseño de Sitio Web'},
+        {id: 4, nombre : 'MERN'}
     
         
     

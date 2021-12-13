@@ -1,7 +1,8 @@
 import React,{useContext,Fragment}from 'react';
 import Tarea from './Tarea';
 import proyectoContext from '../../../../../context/proyectos/proyectoContext';
-
+import TareaContext from '../../../../../context/tareas/tareaContext';
+import {CSSTransition,TransitionGroup } from 'react-transition-group'
 
 const ListadoTarea = () => {
 
@@ -10,7 +11,10 @@ const ListadoTarea = () => {
   const proyectosContext = useContext(proyectoContext);
    const  {proyecto,eliminarProyecto} = proyectosContext;
 
-
+  // obtener las tareas del proyecto fn del context de tarea 
+  const tareasContext = useContext(TareaContext)
+  const {tareasproyecto}=tareasContext;
+ 
 
 // si no ahi pt selecionado 
 if(!proyecto)return <h2>Selecciona un Proyecto</h2>
@@ -18,7 +22,6 @@ if(!proyecto)return <h2>Selecciona un Proyecto</h2>
    // array distryoring para extraer el pt actual 
    const [proyectoActual] = proyecto;
 
-const tareasProyecto=[];
 
 //eliminaa un proyecto 
 const onClickEliminar =()=>{
@@ -30,15 +33,25 @@ const onClickEliminar =()=>{
     <h2>Proyecto :{proyectoActual.nombre}</h2>
       
     <ul className="listado-tareas">
-   {tareasProyecto.length === 0
+   {tareasproyecto.length === 0
      ? (<li className="tarea"><p>No Hay Tareas</p></li>)
 
      :
-     tareasProyecto.map(tarea =>(
+     <TransitionGroup>
+        { tareasproyecto.map(tarea =>(
+           <CSSTransition
+           key= {tarea.id}
+           timeout={200}
+           classNames="tarea"
+           >
+
          <Tarea
            tarea = {tarea}
          />
-     ))
+            </CSSTransition>
+          ))}
+          
+       </TransitionGroup>
     }
     
     </ul>
